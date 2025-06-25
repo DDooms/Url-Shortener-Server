@@ -1,36 +1,41 @@
 ﻿# Url Shortener Server
 ## A Modern server for URL shortening
-This project implements a web-based Sudoku game and solver using Angular, providing users with an interactive platform to play Sudoku puzzles of various difficulties, validate their solutions, and even auto-solve challenging boards. It leverages a third-party API to fetch and process Sudoku boards, offering a dynamic and engaging experience.
-
-Screenshots
-![img.png](img.png)
-![img_1.png](img_1.png)
-![img_2.png](img_2.png)
+A lightweight and testable ASP.NET Core Web API that provides short URL generation, redirection, and real-time usage statistics. Built with Entity Framework Core using the **code-first approach** and connected to a PostgreSQL database.
 
 Features
-Difficulty Selection: Choose from 'easy', 'medium', 'hard', or 'random' difficulties to fetch a new Sudoku board.
 
-Interactive Board: Directly enter numbers into the empty cells of the Sudoku board. Prefilled cells are uneditable.
+Shorten URLs
+- Accepts any valid long URL via a `POST` endpoint
+- Generates a unique short code and secret code
+- Returns both the shortened URL and a stats link
 
-Solution Validation: A "Validate" button to check if your current board state is a correct Sudoku solution.
+Redirect via Short Link
+- Endpoint `/s/{shortCode}` redirects to the original URL
+- Automatically logs each visit
 
-Auto-Solve: A "Solve" button that instantly fills the board with the correct solution based on the initial puzzle.
+Visit Tracking
+- Logs client IPs and access times
+- Uses `X-Forwarded-For` when available, falls back to request IP
 
-Loading Indicators: Visual feedback using spinners during API calls.
+Statistics API
+- Unique visits per day (1 per IP per day)
+- Top 10 IPs by total visits
 
-Toast Notifications: Informative success and error messages for user actions.
+Unit Tested
+- Business logic tested using **MSTest + Moq**
+- Async service methods mocked and covered
 
 To start a local development server, type in the terminal:
 
 ```bash
-npm run start
+dontnet run
 ```
 
-Once the server is running, your browser will automatically open
+Once the server is running, your browser will automatically open Swagger UI, where you can test the API endpoints.
 
 ## Running unit tests
 
 To execute unit tests, type in the terminal
 ```bash
-npm run test
+dotnet test
 ```
