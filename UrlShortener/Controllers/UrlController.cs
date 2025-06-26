@@ -9,8 +9,6 @@ namespace UrlShortener.Controllers;
 public class UrlController(IUrlService urlService, IStatsService statsService, ILogger<UrlController> logger)
     : ControllerBase
 {
-    private readonly ILogger<UrlController> _logger = logger;
-
     [HttpPost("shorten")]
     public async Task<IActionResult> Shorten([FromBody] ShortenUrlRequest request)
     {
