@@ -25,6 +25,22 @@ Unit Tested
 - Business logic tested using **MSTest + Moq**
 - Async service methods mocked and covered
 
+This project uses Entity Framework Core with a code-first approach. To create the database:
+
+Update the connection string in appsettings.Development.json:
+
+```
+"ConnectionStrings": {
+  "DefaultConnection": "Host=localhost;Port=5432;Database=UrlDb;Username=youruser;Password=yourpass"
+}
+```
+
+And then apply migration:
+
+```
+dotnet ef database update
+```
+
 To start a local development server, type in the terminal:
 
 ```bash
